@@ -7,3 +7,5 @@ $config['memsess_servers'] = array(
 			'port' => 11211
 		)
 	);
+
+/* End of file appconfig.php */

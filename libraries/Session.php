@@ -7,7 +7,6 @@
 class CI_Session{
 	/**
 	* Memcache Object
-	* @var MemcacheObject
 	*/
 	var $memcache;
 
@@ -63,7 +62,7 @@ my functions to recreate the CodeIgniter session functions.
 	* Replicates the set_userdata function from CI Session library
 	*
 	* @access public
-	* @param mixed
+	* @param string
 	* @param mixed
 	*/
 	function set_userdata($data, $value=NULL){
@@ -189,7 +188,8 @@ my functions to recreate the CodeIgniter session functions.
 	*
 	* @access public
 	* @param string
-	* @param bool
+	* @param mixed
+	* @return bool
 	*/
 	function set($key, $value){
 		if($this->session_id === false){
@@ -443,4 +443,4 @@ my functions to recreate the CodeIgniter session functions.
 	}
 }
 
-/* End of file msess.php */
+/* End of file Session.php */
