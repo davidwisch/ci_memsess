@@ -42,9 +42,6 @@ this library also provides the following:
 
 `$this->session->destroy(); //alias for sess_destroy()`
 
-`
-/*
-alias for keep_flashdata but provides an optional second parameter (defaults to 1) that lets you specify the number of requests to retain the data
-*/
-$this->session->extend_flashdata($key, $num_requests=1);
-`
+Alias for keep_flashdata() but provides an optional second parameter (defaults to 1) that lets you specify the number of requests to retain the data.
+
+`$this->session->extend_flashdata($key, $num_requests=1);`
