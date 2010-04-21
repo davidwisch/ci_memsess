@@ -434,7 +434,9 @@ my functions to recreate the CodeIgniter session functions.
 		if($this->session_id !== false){
 			$session = $this->get_session();
 			$session['last_activity'] = time();
-			$session['flashdata'] = $this->_clean_flashdata($session['flashdata']);
+			if(isset($session['flashdata'])){
+				$session['flashdata'] = $this->_clean_flashdata($session['flashdata']);
+			}
 			if($this->memcache->replace($this->session_id, $session) === false){
 				$this->memcache->set($this->session_id, $session);
 			}
