@@ -307,7 +307,7 @@ my functions to recreate the CodeIgniter session functions.
 			return false;
 		}
 
-		$session = get_session();
+		$session = $this->get_session();
 		if($session === false){
 			return false;
 		}
