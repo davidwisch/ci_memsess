@@ -8,34 +8,34 @@ class CI_Session{
 	/**
 	* Memcache Object
 	*/
-	var $memcache;
+	public $memcache;
 
 	/**
 	* Session Name/Cookie Name
 	*/
-	var $sessionname;
+	public $sessionname;
 
 	/**
 	* Session expire time (seconds)
 	*/
-	var $session_length;
+	public $session_length;
 
 	/**
 	* Memcache servers to connect to (array)
 	*/
-	var $servers;
+	public $servers;
 
 	/**
 	* Unique identifier, unique to each session
 	*/
-	var $session_id;
+	public $session_id;
 
 	/**
 	* Class constructor
 	*
 	* @access public
 	*/
-	function CI_Session(){
+	public function CI_Session(){
 		log_message('debug', "Session [memcache] Class Initialized");
 
 		//load config
@@ -65,7 +65,7 @@ my functions to recreate the CodeIgniter session functions.
 	* @param string
 	* @param mixed
 	*/
-	function set_userdata($data, $value=NULL){
+	public function set_userdata($data, $value=NULL){
 		if(is_array($data)){
 			foreach($data as $key=>$value){
 				$this->set($key, $value);
@@ -83,7 +83,7 @@ my functions to recreate the CodeIgniter session functions.
 	* @param string
 	* @return mixed
 	*/
-	function userdata($key){
+	public function userdata($key){
 		return $this->get($key);
 	}
 
@@ -94,7 +94,7 @@ my functions to recreate the CodeIgniter session functions.
 	* @param string
 	* @return bool
 	*/
-	function unset_userdata($key){
+	public function unset_userdata($key){
 		return $this->delete($key);
 	}
 
@@ -107,7 +107,7 @@ my functions to recreate the CodeIgniter session functions.
 	* @param key
 	* @return mixed
 	*/
-	function flashdata($key){
+	public function flashdata($key){
 		return $this->get_flashdata($key);
 	}
 
@@ -118,14 +118,14 @@ my functions to recreate the CodeIgniter session functions.
 	* @param string
 	* @return bool
 	*/
-	function keep_flashdata($key){
+	public function keep_flashdata($key){
 		return $this->extend_flashdata($key);
 	}
 
 	/**
 	* Replicates the sess_destroy function from the CI Session library
 	*/
-	function sess_destroy(){
+	public function sess_destroy(){
 		$this->destroy();
 	}
 //////////////////END CI interface functions
@@ -167,7 +167,7 @@ my functions to recreate the CodeIgniter session functions.
 	* @param string
 	* @return mixed
 	*/
-	function get($key){
+	public function get($key){
 		if($this->session_id === false){
 			return false;
 		}
@@ -191,7 +191,7 @@ my functions to recreate the CodeIgniter session functions.
 	* @param mixed
 	* @return bool
 	*/
-	function set($key, $value){
+	public function set($key, $value){
 		if($this->session_id === false){
 			return false;
 		}
@@ -215,7 +215,7 @@ my functions to recreate the CodeIgniter session functions.
 	* @param string
 	* @return bool
 	*/
-	function delete($key){
+	public function delete($key){
 		if($this->session_id === false){
 			return false;
 		}
@@ -250,7 +250,7 @@ my functions to recreate the CodeIgniter session functions.
 	* @param int
 	* @return bool
 	*/
-	function set_flashdata($key, $value, $requests=1){
+	public function set_flashdata($key, $value, $requests=1){
 		if($this->session_id === false){
 			return false;
 		}
@@ -278,7 +278,7 @@ my functions to recreate the CodeIgniter session functions.
 	* @param string
 	* @return mixed
 	*/
-	function get_flashdata($key){
+	public function get_flashdata($key){
 		if($this->session_id === false){
 			return false;
 		}
@@ -302,7 +302,7 @@ my functions to recreate the CodeIgniter session functions.
 	* @param int
 	* @return bool
 	*/
-	function extend_flashdata($key, $extension=1){
+	public function extend_flashdata($key, $extension=1){
 		if($this->session_id === false){
 			return false;
 		}
@@ -337,7 +337,7 @@ my functions to recreate the CodeIgniter session functions.
 	*
 	* @access public
 	*/
-	function destroy(){
+	public function destroy(){
 		if($this->session_id !== false){
 			$this->memcache->delete($this->session_id);
 			$this->session_id = false;
@@ -430,7 +430,7 @@ my functions to recreate the CodeIgniter session functions.
 	*
 	* @access public
 	*/
-	function __destruct(){
+	public function __destruct(){
 		if($this->session_id !== false){
 			$session = $this->get_session();
 			$session['last_activity'] = time();
