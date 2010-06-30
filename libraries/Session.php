@@ -1,4 +1,5 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 /**
 * Memcache Class
 *
@@ -181,6 +182,20 @@ my functions to recreate the CodeIgniter session functions.
 			return $session['userdata'][$key];
 		}
 		return false;
+	}
+
+	/**
+	* Returns the session variable
+	*
+	* @access public
+	* @return array
+	*/
+	public function dump_session(){
+		if($this->session_id === false){
+			return false;
+		}
+
+		return $this->get_session();
 	}
 
 	/**
