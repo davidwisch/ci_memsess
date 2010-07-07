@@ -1,11 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
-* Memcache Class
+* Use memcached as session storage backend in CodeIgniter
 *
-* @author David Wischhusen
+* @author David Wischhusen <davewisch@gmail.com>
+*/
+
+/**
+* Memcache Class
 */
 class CI_Session{
+
 	/**
 	* Memcache Object
 	*/
